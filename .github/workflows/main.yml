@@ -1,0 +1,31 @@
+name: Automated Project Board Management
+
+on:
+  issues:
+    types:
+      - opened
+      - closed
+  pull_request:
+    types:
+      - opened
+      - closed
+
+jobs:
+  update_project_board:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+        -name: Update Project Board
+          run:|
+            # Your custom script or commands to update the project board
+            # For example, move cards based on issue/pull.request events
+            # Use GitHub CLI or API to ubteract with the project board
+
+            # Example using GitHub CLI
+            gh project card move <card-id> --column "In Progress"
+
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
